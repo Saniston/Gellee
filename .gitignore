@@ -1,0 +1,150 @@
+###############################
+# .NET / Visual Studio
+###############################
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Tt]emp/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vspx
+*.psess
+*.vsp
+*.ncb
+*.cachefile
+*.dbmdl
+
+# Build results
+**/Debug/
+**/Release/
+**/x64/
+**/x86/
+**/ARM/
+**/ARM64/
+**/AnyCPU/
+
+# Visual Studio Code
+.vscode/
+.history/
+.idea/
+*.code-workspace
+
+###############################
+# .NET MAUI specific
+###############################
+# Platforms
+**/Platforms/Android/bin/
+**/Platforms/Android/obj/
+**/Platforms/iOS/bin/
+**/Platforms/iOS/obj/
+**/Platforms/MacCatalyst/bin/
+**/Platforms/MacCatalyst/obj/
+**/Platforms/Windows/bin/
+**/Platforms/Windows/obj/
+
+# Generated MAUI resources
+Resources/Raw/*.zip
+Resources/Raw/*.png
+Resources/Raw/*.jpg
+Resources/Raw/*.jpeg
+Resources/Raw/*.mp3
+Resources/Raw/*.mp4
+Resources/Raw/*.pdf
+Resources/Raw/*.db
+Resources/Raw/*.sqlite
+
+# Temporary MAUI build outputs
+*.apk
+*.aab
+*.ipa
+*.app
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+
+# Key and signing files (never commit!)
+*.keystore
+*.p12
+*.key
+*.cer
+*.pem
+*.jks
+*.snk
+
+###############################
+# LiteDB
+###############################
+# Exclude local database files
+*.db
+*.db-shm
+*.db-wal
+*.litedb
+*.litedb-shm
+*.litedb-wal
+
+###############################
+# Logs and crash reports
+###############################
+*.log
+*.tlog
+*.err
+*.dmp
+
+###############################
+# System / OS
+###############################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+###############################
+# User-specific / Temp
+###############################
+*.swp
+*.bak
+*.tmp
+*.temp
+*.orig
+
+###############################
+# JetBrains / Rider
+###############################
+.idea/
+*.iml
+out/
+
+###############################
+# NuGet
+###############################
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+# Restore folders
+packages/
+.nuget/
+
+###############################
+# Miscellaneous
+###############################
+# Local settings and secrets
+secrets.json
+appsettings.Development.json
+launchSettings.json
+.env
+.env.*
