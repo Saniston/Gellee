@@ -1,4 +1,6 @@
-﻿namespace Gellee.Models
+﻿using LiteDB;
+
+namespace Gellee.Models
 {
     public class Recipe : ILocalEntity
     {
@@ -23,9 +25,13 @@
 
     public class RecipeIngredient
     {
+        [BsonIgnore]
+        public string Name => Ingredient?.Name ?? "";
+        public decimal Quantity { get; set; }
+        [BsonIgnore]
+        public string UnitName => UnitOfMeasurement?.Name ?? "";
         public Guid IngredientId { get; set; }
         public Ingredient Ingredient { get; set; } = new Ingredient();
-        public decimal Quantity { get; set; }
         public Guid UnitOfMeasurementId { get; set; }
         public UnitOfMeasurement UnitOfMeasurement { get; set; } = new UnitOfMeasurement();
     }

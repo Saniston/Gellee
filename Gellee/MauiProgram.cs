@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Gellee.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Gellee
 {
@@ -7,6 +8,10 @@ namespace Gellee
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "gelleedata.db");
+            builder.Services.AddSingleton(new DatabaseService(dbPath));
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
