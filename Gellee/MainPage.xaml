@@ -10,8 +10,10 @@
                 x:Name="UnitsBtn"
                 Text="Unidades de Medida"
                 Clicked="OnUnitsClicked"
-                BackgroundColor="Transparent"
-                TextColor="#333333"
+                BackgroundColor="{StaticResource Gray300}"
+                BorderColor="{StaticResource AccentOrange}"
+                BorderWidth="1"
+                TextColor="{StaticResource Gray900}"
                 CornerRadius="12"
                 Padding="14,8" />
 
@@ -19,8 +21,10 @@
                 x:Name="IngredientsBtn"
                 Text="Ingredientes"
                 Clicked="OnIngredientsClicked"
-                BackgroundColor="Transparent"
-                TextColor="#333333"
+                BackgroundColor="{StaticResource Gray300}"
+                BorderColor="{StaticResource AccentOrange}"
+                BorderWidth="1"
+                TextColor="{StaticResource Gray900}"
                 CornerRadius="12"
                 Padding="14,8" />
 
@@ -29,8 +33,10 @@
                 x:Name="RecipesBtn"
                 Text="Receitas"
                 Clicked="OnRecipesClicked"
-                BackgroundColor="#ff7043"
-                TextColor="White"
+                BackgroundColor="{StaticResource Success}"
+                BorderColor="{StaticResource Success}"
+                BorderWidth="2"
+                TextColor="{StaticResource White}"
                 FontAttributes="Bold"
                 CornerRadius="16"
                 Padding="16,10" />
