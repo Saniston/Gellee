@@ -229,7 +229,6 @@ public partial class RecipeEditPage : ContentPage
             _recipeService.Save(_current);
             await DisplayAlertAsync("Sucesso", "Receita salva.", "OK");
 
-            // volta à lista
             await Shell.Current.GoToAsync("..");
         }
         catch (Exception ex)

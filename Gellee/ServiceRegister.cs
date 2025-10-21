@@ -15,6 +15,7 @@ namespace Gellee
             services.AddTransient<Pages.Units.UnitsPage>();
             services.AddTransient<Pages.Ingredients.IngredientsPage>();
             services.AddTransient<Pages.Recipes.RecipesPage>();
+            services.AddTransient<Pages.Recipes.RecipeEditPage>();
         }
     }
 }
