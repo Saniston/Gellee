@@ -3,8 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gellee.Pages.Units.UnitsPage"
              Title="Unidades de Medida">
-    <VerticalStackLayout Padding="20" Spacing="12">
-        <Label Text="Unidades de Medida" FontSize="20" FontAttributes="Bold" />
-        <Label Text="Aqui você vai gerenciar unidades de medida." />
+    <VerticalStackLayout Padding="16" Spacing="12">
+
+        <SearchBar
+            x:Name="SearchBar"
+            Placeholder="Pesquisar unidades..."
+            TextChanged="OnSearchBarTextChanged" />
+
+        <CollectionView
+            x:Name="UnitsCollection"
+            ItemsLayout="VerticalList"
+            RemainingItemsThreshold="2"
+            RemainingItemsThresholdReached="OnRemainingItemsThresholdReached"
+            VerticalOptions="FillAndExpand"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem
+                                    Text="Editar"
+                                    BackgroundColor="{StaticResource AccentOrange}"
+                                    CommandParameter="{Binding Id}"
+                                    Invoked="OnEditSwipeInvoked" />
+                                <SwipeItem
+                                    Text="Remover"
+                                    BackgroundColor="{StaticResource Gray300}"
+                                    CommandParameter="{Binding Id}"
+                                    Invoked="OnDeleteSwipeInvoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="12">
+                            <Label Text="{Binding Name}" FontSize="16" VerticalOptions="Center" />
+                            <Label Text="{Binding BaseValue}" FontSize="12" HorizontalOptions="End" VerticalOptions="Center" TextColor="{StaticResource Gray600}" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout HorizontalOptions="Fill" Padding="0,8,0,0">
+            <Button
+                x:Name="AddUnitButton"
+                Text="Adicionar unidade"
+                Clicked="OnAddUnitClicked"
+                HorizontalOptions="Center"
+                BackgroundColor="{StaticResource AccentOrangeBrush}"
+                TextColor="{StaticResource White}" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

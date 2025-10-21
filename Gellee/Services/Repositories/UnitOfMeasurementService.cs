@@ -37,7 +37,7 @@ namespace Gellee.Services.Repositories
             return _databaseService.Units.FindById(id);
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _databaseService.Units.Delete(id);
         }
