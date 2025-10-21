@@ -3,8 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gellee.Pages.Recipes.RecipesPage"
              Title="Receitas">
-    <VerticalStackLayout Padding="20" Spacing="12">
-        <Label Text="Receitas" FontSize="22" FontAttributes="Bold" TextColor="#ff7043" />
-        <Label Text="Aqui você pode visualizar, editar e recalcular ingredientes das receitas." />
+    <VerticalStackLayout Padding="16" Spacing="12">
+
+        <SearchBar
+            x:Name="SearchBar"
+            Placeholder="Pesquisar receitas..."
+            TextChanged="OnSearchBarTextChanged" />
+
+        <CollectionView
+            x:Name="RecipesCollection"
+            ItemsLayout="VerticalList"
+            RemainingItemsThreshold="2"
+            RemainingItemsThresholdReached="OnRemainingItemsThresholdReached"
+            VerticalOptions="FillAndExpand"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem
+                                    Text="Editar"
+                                    BackgroundColor="{StaticResource AccentOrange}"
+                                    CommandParameter="{Binding Id}"
+                                    Invoked="OnEditSwipeInvoked" />
+                                <SwipeItem
+                                    Text="Remover"
+                                    BackgroundColor="{StaticResource Gray300}"
+                                    CommandParameter="{Binding Id}"
+                                    Invoked="OnDeleteSwipeInvoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="12">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
+                                <Label Text="{Binding Description}" FontSize="12" LineBreakMode="TailTruncation" TextColor="{StaticResource Gray600}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout HorizontalOptions="Fill" Padding="0,8,0,0">
+            <Button
+                x:Name="AddRecipeButton"
+                Text="Adicionar receita"
+                Clicked="OnAddRecipeClicked"
+                HorizontalOptions="Center"
+                BackgroundColor="{StaticResource AccentOrangeBrush}"
+                TextColor="{StaticResource White}" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -32,14 +32,14 @@ namespace Gellee.Services.Repositories
             return _databaseService.Recipes.FindAll();
         }
 
-        public Recipe? GetById(int id)
+        public Recipe? GetById(Guid id)
         {
             return _databaseService.Recipes.FindById(id);
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            _databaseService.Units.Delete(id);
+            _databaseService.Recipes.Delete(id);
         }
     }
 }

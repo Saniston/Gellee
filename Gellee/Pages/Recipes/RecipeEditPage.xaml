@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gellee.Pages.Recipes.RecipeEditPage"
+             Title="Receita">
+    <VerticalStackLayout Padding="16" Spacing="12">
+
+        <Label Text="Nome" />
+        <Entry x:Name="NameEntry" Placeholder="Nome da receita" />
+
+        <Label Text="Descrição" />
+        <Editor x:Name="DescriptionEditor" HeightRequest="120" Placeholder="Descrição / notas" />
+
+        <Label Text="Ingredientes" FontAttributes="Bold" Margin="0,8,0,0" />
+        <CollectionView
+            x:Name="RecipeIngredientsCollection"
+            ItemsLayout="VerticalList"
+            SelectionMode="None"
+            HeightRequest="260">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem
+                                    Text="Editar"
+                                    BackgroundColor="{StaticResource AccentOrange}"
+                                    CommandParameter="{Binding IngredientId}"
+                                    Invoked="OnEditIngredientInvoked" />
+                                <SwipeItem
+                                    Text="Remover"
+                                    BackgroundColor="{StaticResource Gray300}"
+                                    CommandParameter="{Binding IngredientId}"
+                                    Invoked="OnDeleteIngredientInvoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="12">
+                            <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Name}" FontSize="16" />
+                                    <Label Text="{Binding UnitName}" FontSize="12" TextColor="{StaticResource Gray600}" />
+                                </VerticalStackLayout>
+                                <Label Text="{Binding Quantity}" FontSize="16" HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            x:Name="AddIngredientButton"
+            Text="Adicionar ingrediente"
+            Clicked="OnAddIngredientClicked"
+            BackgroundColor="{StaticResource AccentOrangeBrush}"
+            TextColor="{StaticResource White}" />
+
+        <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+            <Button Text="Salvar" Clicked="OnSaveClicked" BackgroundColor="{StaticResource AccentOrangeBrush}" TextColor="{StaticResource White}" />
+            <Button Text="Cancelar" Clicked="OnCancelClicked" BackgroundColor="{StaticResource Gray300}" TextColor="{StaticResource Black}" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
