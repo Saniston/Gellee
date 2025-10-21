@@ -11,4 +11,9 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <!-- Rotas das páginas do menu -->
+    <ShellContent Title="Unidades" ContentTemplate="{DataTemplate local:Pages.UnitsPage}" Route="UnitsPage" />
+    <ShellContent Title="Ingredientes" ContentTemplate="{DataTemplate local:Pages.IngredientsPage}" Route="IngredientsPage" />
+    <ShellContent Title="Receitas" ContentTemplate="{DataTemplate local:Pages.RecipesPage}" Route="RecipesPage" />
+
 </Shell>
