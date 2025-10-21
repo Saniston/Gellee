@@ -32,7 +32,7 @@ namespace Gellee.Services.Repositories
             return _databaseService.Units.FindAll();
         }
 
-        public UnitOfMeasurement? GetById(int id)
+        public UnitOfMeasurement? GetById(Guid id)
         {
             return _databaseService.Units.FindById(id);
         }

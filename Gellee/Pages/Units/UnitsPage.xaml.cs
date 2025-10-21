@@ -43,8 +43,7 @@ public partial class UnitsPage : ContentPage
                 _hasMore = true;
             }
 
-            if (!_hasMore)
-                return;
+            if (!_hasMore) return;
 
             var results = _unitService.GetPaginated(_filter)?.ToList() ?? [];
 
@@ -83,8 +82,7 @@ public partial class UnitsPage : ContentPage
         try
         {
             string? name = await DisplayPromptAsync("Nova unidade", "Informe o nome da unidade:", "Adicionar", "Cancelar", placeholder: "Ex: Copo", maxLength: 100, keyboard: Keyboard.Text);
-            if (string.IsNullOrWhiteSpace(name))
-                return;
+            if (string.IsNullOrWhiteSpace(name)) return;
 
             var unit = new UnitOfMeasurement
             {
@@ -118,8 +116,7 @@ public partial class UnitsPage : ContentPage
                 }
 
                 string? newName = await DisplayPromptAsync("Editar unidade", "Nome da unidade:", "Salvar", "Cancelar", initialValue: unit.Name, maxLength: 100, keyboard: Keyboard.Text);
-                if (string.IsNullOrWhiteSpace(newName))
-                    return;
+                if (string.IsNullOrWhiteSpace(newName)) return;
 
                 unit.Name = newName.Trim();
                 _unitService.Save(unit);

@@ -1,6 +1,4 @@
-﻿using Gellee.Services;
-using Gellee.Services.Repositories;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace Gellee
 {
@@ -10,11 +8,7 @@ namespace Gellee
         {
             var builder = MauiApp.CreateBuilder();
 
-            builder.Services.AddSingleton(new DatabaseService());
-            builder.Services.AddSingleton<UnitOfMeasurementService>();
-
-            // Registrar pages para que possam ser resolvidas via DI quando navegadas por rota
-            builder.Services.AddTransient<Pages.Units.UnitsPage>();
+            builder.Services.RegisterAppServices();
 
             builder
                 .UseMauiApp<App>()

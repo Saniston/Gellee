@@ -3,8 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gellee.Pages.Ingredients.IngredientsPage"
              Title="Ingredientes">
-    <VerticalStackLayout Padding="20" Spacing="12">
-        <Label Text="Ingredientes" FontSize="20" FontAttributes="Bold" />
-        <Label Text="Aqui você vai gerenciar ingredientes." />
+    <VerticalStackLayout Padding="16" Spacing="12">
+
+        <SearchBar
+            x:Name="SearchBar"
+            Placeholder="Pesquisar ingredientes..."
+            TextChanged="OnSearchBarTextChanged" />
+
+        <CollectionView
+            x:Name="IngredientsCollection"
+            ItemsLayout="VerticalList"
+            RemainingItemsThreshold="2"
+            RemainingItemsThresholdReached="OnRemainingItemsThresholdReached"
+            VerticalOptions="FillAndExpand"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem
+                                    Text="Editar"
+                                    BackgroundColor="{StaticResource AccentOrange}"
+                                    CommandParameter="{Binding Id}"
+                                    Invoked="OnEditSwipeInvoked" />
+                                <SwipeItem
+                                    Text="Remover"
+                                    BackgroundColor="{StaticResource Gray300}"
+                                    CommandParameter="{Binding Id}"
+                                    Invoked="OnDeleteSwipeInvoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="12">
+                            <Label Text="{Binding Name}" FontSize="16" VerticalOptions="Center" />
+                            <Label Text="{Binding CreateDate, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="12" HorizontalOptions="End" VerticalOptions="Center" TextColor="{StaticResource Gray600}" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout HorizontalOptions="Fill" Padding="0,8,0,0">
+            <Button
+                x:Name="AddIngredientButton"
+                Text="Adicionar ingrediente"
+                Clicked="OnAddIngredientClicked"
+                HorizontalOptions="Center"
+                BackgroundColor="{StaticResource AccentOrangeBrush}"
+                TextColor="{StaticResource White}" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
