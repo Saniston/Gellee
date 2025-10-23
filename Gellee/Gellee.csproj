@@ -38,6 +38,14 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<AndroidKeyStore>true</AndroidKeyStore>
+		<AndroidSigningKeyStore>gellee.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>gelleealias</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>sap@123</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>sap@123</AndroidSigningStorePass>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
