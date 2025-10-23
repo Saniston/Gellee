@@ -4,9 +4,9 @@ namespace Gellee.Services
 {
     public static class RecipeCalculator
     {
-        public static List<RecipeIngredient> Recalculate(List<RecipeIngredient> ingredients, string baseIngredientName, decimal newQuantity)
+        public static List<RecipeIngredient> Recalculate(List<RecipeIngredient> ingredients, Guid ingredientId, decimal newQuantity)
         {
-            var baseIngredient = ingredients.First(i => i.Ingredient.Name.Equals(baseIngredientName, StringComparison.OrdinalIgnoreCase));
+            var baseIngredient = ingredients.First(i => i.Ingredient.Id == ingredientId);
             decimal ratio = newQuantity / baseIngredient.Quantity;
 
             return ingredients.Select(i => new RecipeIngredient

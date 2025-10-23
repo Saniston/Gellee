@@ -24,6 +24,8 @@ public partial class RecipeCalculatePage : ContentPage
         }
     }
 
+    bool _isRecalculating = false;
+
     public RecipeCalculatePage(RecipeService recipeService)
     {
         InitializeComponent();
@@ -50,7 +52,6 @@ public partial class RecipeCalculatePage : ContentPage
             _ingredients.Clear();
             foreach (var ri in _recipe.Ingredients)
             {
-                // clonar itens para edição independente
                 _ingredients.Add(new RecipeIngredient
                 {
                     IngredientId = ri.IngredientId,
@@ -73,29 +74,32 @@ public partial class RecipeCalculatePage : ContentPage
         try
         {
             if (!(sender is Entry entry)) return;
-            if (!(entry.BindingContext is RecipeIngredient edited)) return;
 
-            var text = entry.Text ?? "0";
-            if (!decimal.TryParse(text, NumberStyles.Any, CultureInfo.CurrentCulture, out var newQty)
-                && !decimal.TryParse(text, NumberStyles.Any, CultureInfo.InvariantCulture, out newQty))
+            if (_isRecalculating) return;
+
+            _isRecalculating = true;
+            entry.IsEnabled = false;
+            try
             {
-                return;
+                if (!(entry.BindingContext is RecipeIngredient edited)) return;
+
+                var text = entry.Text ?? "0";
+                if (!decimal.TryParse(text, NumberStyles.Any, CultureInfo.CurrentCulture, out var newQty)
+                    && !decimal.TryParse(text, NumberStyles.Any, CultureInfo.InvariantCulture, out newQty))
+                {
+                    return;
+                }
+
+                var recalculated = RecipeCalculator.Recalculate(_recipe!.Ingredients, edited.Ingredient.Id, newQty);
+                _ingredients.Clear();
+                foreach (var ri in recalculated)
+                    _ingredients.Add(ri);
             }
-
-            // recalcula usando o nome do ingrediente editado como base
-            var recalculated = RecipeCalculator.Recalculate(_ingredients.Select(i => new RecipeIngredient
+            finally
             {
-                IngredientId = i.IngredientId,
-                Ingredient = i.Ingredient,
-                Quantity = i.Quantity,
-                UnitOfMeasurementId = i.UnitOfMeasurementId,
-                UnitOfMeasurement = i.UnitOfMeasurement
-            }).ToList(), edited.Ingredient.Name, newQty);
-
-            // atualiza a collection exibida
-            _ingredients.Clear();
-            foreach (var ri in recalculated)
-                _ingredients.Add(ri);
+                entry.IsEnabled = true;
+                _isRecalculating = false;
+            }
         }
         catch (Exception ex)
         {

@@ -3,15 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gellee.MainPage">
 
-    <Grid RowDefinitions="Auto,*" Padding="20">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
         <!-- Background image (colocada primeiro para ficar atrás) -->
         <Image Source="gelleebg.jpeg"
                Aspect="AspectFill"
                Opacity="0.75"
-               Grid.RowSpan="2" />
+               Grid.RowSpan="3" />
 
-        <!-- App name -->
+        <!-- App name (topo) -->
         <Label
+            Grid.Row="0"
             Text="Gellée"
             FontSize="32"
             FontAttributes="Bold"
@@ -19,8 +20,11 @@
             TextColor="#F4C2E0"
             Margin="0,4" />
 
-        <!-- Navigation Menu -->
-        <VerticalStackLayout Grid.Row="1" Spacing="12" HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10">
+        <!-- Espaço central (pode receber conteúdo futuro) -->
+        <VerticalStackLayout Grid.Row="1" />
+
+        <!-- Navigation Menu (fixo próximo à borda inferior) -->
+        <VerticalStackLayout Grid.Row="2" Spacing="12" HorizontalOptions="Center" VerticalOptions="End" Padding="0,8">
             <Button
                 x:Name="UnitsBtn"
                 Text="Unidades de Medida"
