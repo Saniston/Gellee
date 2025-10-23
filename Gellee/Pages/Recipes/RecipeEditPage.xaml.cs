@@ -1,7 +1,6 @@
 using Gellee.Models;
 using Gellee.Services.Repositories;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace Gellee.Pages.Recipes;
 
@@ -66,7 +65,6 @@ public partial class RecipeEditPage : ContentPage
     {
         try
         {
-            // carregar opções
             var ingredients = _ingredientService.GetPaginated(null).ToList();
             if (!ingredients.Any())
             {
@@ -94,7 +92,6 @@ public partial class RecipeEditPage : ContentPage
             if (string.IsNullOrWhiteSpace(qtyRaw)) return;
             if (!decimal.TryParse(qtyRaw.Replace(",", "."), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out var qty))
             {
-                // tentativa com current culture
                 if (!decimal.TryParse(qtyRaw, out qty))
                 {
                     await DisplayAlertAsync("Erro", "Quantidade inválida.", "OK");
@@ -141,7 +138,6 @@ public partial class RecipeEditPage : ContentPage
                     return;
                 }
 
-                // Editar quantidade
                 string qtyRaw = await DisplayPromptAsync("Quantidade", "Informe a quantidade:", "OK", "Cancelar", initialValue: item.Quantity.ToString(System.Globalization.CultureInfo.InvariantCulture), keyboard: Keyboard.Numeric);
                 if (string.IsNullOrWhiteSpace(qtyRaw)) return;
                 if (!decimal.TryParse(qtyRaw.Replace(",", "."), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out var qty))
@@ -154,7 +150,6 @@ public partial class RecipeEditPage : ContentPage
                 }
                 item.Quantity = qty;
 
-                // Editar unidade (opcional)
                 var units = _unitService.GetPaginated(null).ToList();
                 if (units.Any())
                 {
@@ -171,7 +166,6 @@ public partial class RecipeEditPage : ContentPage
                     }
                 }
 
-                // Forçar atualização da CollectionView
                 var idx = _ingredients.IndexOf(item);
                 if (idx >= 0)
                 {

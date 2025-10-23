@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gellee.Pages.Recipes.RecipeCalculatePage"
+             Title="Recalcular Ingredientes">
+    <VerticalStackLayout Padding="16" Spacing="12">
+        <Label x:Name="RecipeNameLabel" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <CollectionView x:Name="IngredientsCollection" ItemsLayout="VerticalList" SelectionMode="None" HeightRequest="300">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="8">
+                        <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" FontSize="16" />
+                                <Label Text="{Binding UnitName}" FontSize="12" TextColor="{StaticResource Gray600}" />
+                            </VerticalStackLayout>
+
+                            <Entry Text="{Binding Quantity}"
+                                   Keyboard="Numeric"
+                                   WidthRequest="120"
+                                   HorizontalOptions="End"
+                                   Unfocused="OnQuantityUnfocused" />
+                        </HorizontalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+            <Button Text="Salvar como cópia" Clicked="OnSaveAsCopyClicked" BackgroundColor="{StaticResource Success}" TextColor="{StaticResource White}" />
+            <Button Text="Voltar" Clicked="OnCancelClicked" BackgroundColor="{StaticResource Gray300}" TextColor="{StaticResource Black}" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

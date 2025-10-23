@@ -7,7 +7,7 @@ namespace Gellee.Pages.Recipes;
 public partial class RecipesPage : ContentPage
 {
     readonly RecipeService _recipeService;
-    readonly ObservableCollection<Recipe> _items = new();
+    readonly ObservableCollection<Recipe> _items = [];
     readonly PageFilter _filter = new() { Take = 10, Page = 1 };
     bool _isLoading;
     bool _hasMore = true;
@@ -121,6 +121,23 @@ public partial class RecipesPage : ContentPage
         {
             System.Diagnostics.Debug.WriteLine(ex);
             await DisplayAlertAsync("Erro", $"Não foi possível remover a receita.\n{ex.Message}", "OK");
+        }
+    }
+
+    async void OnRecipeSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        try
+        {
+            if (e.CurrentSelection?.FirstOrDefault() is not Recipe selected) return;
+
+            await Shell.Current.GoToAsync($"RecipeCalculatePage?recipeId={selected.Id}");
+
+            RecipesCollection.SelectedItem = null;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(ex);
+            await DisplayAlertAsync("Erro", $"Não foi possível abrir a receita.\n{ex.Message}", "OK");
         }
     }
 }

@@ -15,8 +15,9 @@
             ItemsLayout="VerticalList"
             RemainingItemsThreshold="2"
             RemainingItemsThresholdReached="OnRemainingItemsThresholdReached"
-            VerticalOptions="FillAndExpand"
-            SelectionMode="None">
+            VerticalOptions="Fill"
+            SelectionMode="Single"
+            SelectionChanged="OnRecipeSelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
