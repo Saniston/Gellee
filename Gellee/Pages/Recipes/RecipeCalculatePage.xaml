@@ -28,7 +28,7 @@
         </CollectionView>
 
         <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
-            <Button Text="Salvar como cópia" Clicked="OnSaveAsCopyClicked" BackgroundColor="{StaticResource Success}" TextColor="{StaticResource White}" />
+            <Button Text="Salvar como cÃ³pia" Clicked="OnSaveAsCopyClicked" BackgroundColor="{StaticResource Success}" TextColor="{StaticResource White}" />
             <Button Text="Voltar" Clicked="OnCancelClicked" BackgroundColor="{StaticResource Gray300}" TextColor="{StaticResource Black}" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
