@@ -37,11 +37,12 @@
 
                         <Grid Padding="12">
                             <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                <Label Text="{Binding Quantity}" FontSize="16" HorizontalOptions="End" VerticalOptions="Center" />
+                                <BoxView WidthRequest="0" HorizontalOptions="Fill" />
                                 <VerticalStackLayout>
                                     <Label Text="{Binding Name}" FontSize="16" />
                                     <Label Text="{Binding UnitName}" FontSize="12" TextColor="{StaticResource Gray600}" />
                                 </VerticalStackLayout>
-                                <Label Text="{Binding Quantity}" FontSize="16" HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
                             </HorizontalStackLayout>
                         </Grid>
                     </SwipeView>

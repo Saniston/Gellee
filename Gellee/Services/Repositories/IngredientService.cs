@@ -13,33 +13,27 @@ namespace Gellee.Services.Repositories
 
         public void Save(Ingredient ingredient)
         {
-            _databaseService.Ingredients.Upsert(ingredient);
+            _databaseService.Upsert(ingredient);
         }
 
         public IEnumerable<Ingredient> GetPaginated(PageFilter filter = null)
         {
-            if (filter is not null)
-            {
-                filter.AdjustFilter();
-                
-                return _databaseService.Ingredients.Find(
-                    i => string.IsNullOrEmpty(filter.SearchTerm) || i.Name.ToLower().Contains(filter.SearchTerm.ToLower()),
-                    skip: filter.Skip,
-                    limit: filter.Take
-                );
-            }
+            filter ??= new PageFilter();
 
-            return _databaseService.Ingredients.FindAll();
+            return _databaseService.GetByFilter<Ingredient>(
+                filter,
+                i => string.IsNullOrEmpty(filter.SearchTerm) || i.Name.ToLower().Contains(filter.SearchTerm.ToLower())
+            );
         }
 
         public Ingredient? GetById(Guid id)
         {
-            return _databaseService.Ingredients.FindById(id);
+            return _databaseService.GetById<Ingredient>(id);
         }
 
         public void Delete(Guid id)
         {
-            _databaseService.Ingredients.Delete(id);
+            _databaseService.Delete<Ingredient>(id);
         }
     }
 }

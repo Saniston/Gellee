@@ -4,43 +4,64 @@
              x:Class="Gellee.MainPage">
 
     <Grid RowDefinitions="Auto,*" Padding="20">
+        <!-- Background image (colocada primeiro para ficar atrás) -->
+        <Image Source="gelleebg.jpeg"
+               Aspect="AspectFill"
+               Opacity="0.75"
+               Grid.RowSpan="2" />
+
+        <!-- App name -->
+        <Label
+            Text="Gellée"
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            TextColor="#F4C2E0"
+            Margin="0,4" />
+
         <!-- Navigation Menu -->
-        <HorizontalStackLayout Spacing="12" VerticalOptions="Start" HorizontalOptions="Center" Padding="0,10">
+        <VerticalStackLayout Grid.Row="1" Spacing="12" HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10">
             <Button
                 x:Name="UnitsBtn"
                 Text="Unidades de Medida"
                 Clicked="OnUnitsClicked"
-                BackgroundColor="{StaticResource Gray300}"
-                BorderColor="{StaticResource AccentOrange}"
+                BackgroundColor="#D7EEFF"
+                BorderColor="#9FC9FF"
                 BorderWidth="1"
                 TextColor="{StaticResource Gray900}"
                 CornerRadius="12"
-                Padding="14,8" />
+                Padding="14,8"
+                HorizontalOptions="Center"
+                FontSize="16" />
 
             <Button
                 x:Name="IngredientsBtn"
                 Text="Ingredientes"
                 Clicked="OnIngredientsClicked"
-                BackgroundColor="{StaticResource Gray300}"
-                BorderColor="{StaticResource AccentOrange}"
+                BackgroundColor="#D7EEFF"
+                BorderColor="#9FC9FF"
                 BorderWidth="1"
                 TextColor="{StaticResource Gray900}"
                 CornerRadius="12"
-                Padding="14,8" />
+                Padding="14,8"
+                HorizontalOptions="Center"
+                FontSize="16" />
 
             <!-- Receitas destacado -->
             <Button
                 x:Name="RecipesBtn"
                 Text="Receitas"
                 Clicked="OnRecipesClicked"
-                BackgroundColor="{StaticResource Success}"
-                BorderColor="{StaticResource Success}"
+                BackgroundColor="#E6F9E8"
+                BorderColor="#BFEFC2"
                 BorderWidth="2"
-                TextColor="{StaticResource White}"
+                TextColor="{StaticResource Gray900}"
                 FontAttributes="Bold"
                 CornerRadius="16"
-                Padding="16,10" />
-        </HorizontalStackLayout>
+                Padding="16,10"
+                HorizontalOptions="Center"
+                FontSize="16" />
+        </VerticalStackLayout>
 
     </Grid>
 

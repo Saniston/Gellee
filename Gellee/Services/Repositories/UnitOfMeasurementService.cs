@@ -13,33 +13,27 @@ namespace Gellee.Services.Repositories
 
         public void Save(UnitOfMeasurement ingredient)
         {
-            _databaseService.Units.Upsert(ingredient);
+            _databaseService.Upsert(ingredient);
         }
 
         public IEnumerable<UnitOfMeasurement> GetPaginated(PageFilter filter = null)
         {
-            if (filter is not null)
-            {
-                filter.AdjustFilter();
+            filter ??= new PageFilter();
 
-                return _databaseService.Units.Find(
-                    i => string.IsNullOrEmpty(filter.SearchTerm) || i.Name.ToLower().Contains(filter.SearchTerm.ToLower()),
-                    skip: filter.Skip,
-                    limit: filter.Take
-                );
-            }
-
-            return _databaseService.Units.FindAll();
+            return _databaseService.GetByFilter<UnitOfMeasurement>(
+                filter,
+                i => string.IsNullOrEmpty(filter.SearchTerm) || i.Name.ToLower().Contains(filter.SearchTerm.ToLower())
+            );
         }
 
         public UnitOfMeasurement? GetById(Guid id)
         {
-            return _databaseService.Units.FindById(id);
+            return _databaseService.GetById<UnitOfMeasurement>(id);
         }
 
         public void Delete(Guid id)
         {
-            _databaseService.Units.Delete(id);
+            _databaseService.Delete<UnitOfMeasurement>(id);
         }
     }
 }
