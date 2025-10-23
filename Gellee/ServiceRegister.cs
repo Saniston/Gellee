@@ -1,4 +1,4 @@
-﻿using Gellee.Services;
+using Gellee.Services;
 using Gellee.Services.Repositories;
 
 namespace Gellee

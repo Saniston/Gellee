@@ -56,7 +56,7 @@ public partial class IngredientsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel carregar ingredientes.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel carregar ingredientes.\n{ex.Message}", "OK");
         }
         finally
         {
@@ -79,7 +79,7 @@ public partial class IngredientsPage : ContentPage
     {
         try
         {
-            string? name = await DisplayPromptAsync("Novo ingrediente", "Informe o nome do ingrediente:", "Adicionar", "Cancelar", placeholder: "Ex: AÁ˙car", maxLength: 100, keyboard: Keyboard.Text);
+            string? name = await DisplayPromptAsync("Novo ingrediente", "Informe o nome do ingrediente:", "Adicionar", "Cancelar", placeholder: "Ex: A√ß√∫car", maxLength: 100, keyboard: Keyboard.Text);
             if (string.IsNullOrWhiteSpace(name)) return;
 
             var ingredient = new Ingredient
@@ -95,7 +95,7 @@ public partial class IngredientsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel adicionar o ingrediente.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel adicionar o ingrediente.\n{ex.Message}", "OK");
         }
     }
 
@@ -111,7 +111,7 @@ public partial class IngredientsPage : ContentPage
 
                 if (ingredient == null)
                 {
-                    await DisplayAlertAsync("Aviso", "Ingrediente n„o encontrado.", "OK");
+                    await DisplayAlertAsync("Aviso", "Ingrediente n√£o encontrado.", "OK");
                     return;
                 }
 
@@ -131,7 +131,7 @@ public partial class IngredientsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel editar o ingrediente.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel editar o ingrediente.\n{ex.Message}", "OK");
         }
     }
 
@@ -144,7 +144,7 @@ public partial class IngredientsPage : ContentPage
                 var ingredient = _items.FirstOrDefault(x => x.Id == id);
                 if (ingredient == null)
                 {
-                    await DisplayAlertAsync("Aviso", "Ingrediente n„o encontrado.", "OK");
+                    await DisplayAlertAsync("Aviso", "Ingrediente n√£o encontrado.", "OK");
                     return;
                 }
 
@@ -160,7 +160,7 @@ public partial class IngredientsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel remover o ingrediente.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel remover o ingrediente.\n{ex.Message}", "OK");
         }
     }
 }

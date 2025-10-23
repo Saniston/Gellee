@@ -57,7 +57,7 @@ public partial class UnitsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel carregar unidades.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel carregar unidades.\n{ex.Message}", "OK");
         }
         finally
         {
@@ -98,7 +98,7 @@ public partial class UnitsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel adicionar a unidade.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel adicionar a unidade.\n{ex.Message}", "OK");
         }
     }
 
@@ -111,7 +111,7 @@ public partial class UnitsPage : ContentPage
                 var unit = _items.FirstOrDefault(x => x.Id == id) ?? _unitService.GetById(default);
                 if (unit == null)
                 {
-                    await DisplayAlertAsync("Aviso", "Unidade n„o encontrada.", "OK");
+                    await DisplayAlertAsync("Aviso", "Unidade n√£o encontrada.", "OK");
                     return;
                 }
 
@@ -131,7 +131,7 @@ public partial class UnitsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel editar a unidade.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel editar a unidade.\n{ex.Message}", "OK");
         }
     }
 
@@ -144,7 +144,7 @@ public partial class UnitsPage : ContentPage
                 var unit = _items.FirstOrDefault(x => x.Id == id);
                 if (unit == null)
                 {
-                    await DisplayAlertAsync("Aviso", "Unidade n„o encontrada.", "OK");
+                    await DisplayAlertAsync("Aviso", "Unidade n√£o encontrada.", "OK");
                     return;
                 }
 
@@ -160,7 +160,7 @@ public partial class UnitsPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel remover a unidade.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel remover a unidade.\n{ex.Message}", "OK");
         }
     }
 }

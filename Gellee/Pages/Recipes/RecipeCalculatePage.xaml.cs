@@ -43,7 +43,7 @@ public partial class RecipeCalculatePage : ContentPage
             _recipe = _recipeService.GetById(guid);
             if (_recipe == null)
             {
-                await DisplayAlertAsync("Erro", "Receita não encontrada.", "OK");
+                await DisplayAlertAsync("Erro", "Receita nÃ£o encontrada.", "OK");
                 return;
             }
 
@@ -65,7 +65,7 @@ public partial class RecipeCalculatePage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"Não foi possível carregar a receita.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"NÃ£o foi possÃ­vel carregar a receita.\n{ex.Message}", "OK");
         }
     }
 
@@ -115,7 +115,7 @@ public partial class RecipeCalculatePage : ContentPage
 
             var copy = new Recipe
             {
-                Name = _recipe.Name + " (cópia)",
+                Name = _recipe.Name + " (cÃ³pia)",
                 Description = _recipe.Description,
                 Ingredients = _ingredients.Select(i => new RecipeIngredient
                 {
@@ -130,13 +130,13 @@ public partial class RecipeCalculatePage : ContentPage
             copy.GenerateId();
             _recipeService.Save(copy);
 
-            await DisplayAlertAsync("Sucesso", "Receita salva como cópia.", "OK");
+            await DisplayAlertAsync("Sucesso", "Receita salva como cÃ³pia.", "OK");
             await Shell.Current.GoToAsync("..");
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"Não foi possível salvar a cópia.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"NÃ£o foi possÃ­vel salvar a cÃ³pia.\n{ex.Message}", "OK");
         }
     }
 

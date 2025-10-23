@@ -1,4 +1,4 @@
-﻿namespace Gellee
+namespace Gellee
 {
     public partial class AppShell : Shell
     {

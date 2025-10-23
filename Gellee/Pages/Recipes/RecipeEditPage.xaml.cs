@@ -57,7 +57,7 @@ public partial class RecipeEditPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel carregar a receita.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel carregar a receita.\n{ex.Message}", "OK");
         }
     }
 
@@ -94,7 +94,7 @@ public partial class RecipeEditPage : ContentPage
             {
                 if (!decimal.TryParse(qtyRaw, out qty))
                 {
-                    await DisplayAlertAsync("Erro", "Quantidade inv·lida.", "OK");
+                    await DisplayAlertAsync("Erro", "Quantidade inv√°lida.", "OK");
                     return;
                 }
             }
@@ -121,7 +121,7 @@ public partial class RecipeEditPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel adicionar ingrediente.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel adicionar ingrediente.\n{ex.Message}", "OK");
         }
     }
 
@@ -134,7 +134,7 @@ public partial class RecipeEditPage : ContentPage
                 var item = _ingredients.FirstOrDefault(x => x.IngredientId == ingId);
                 if (item == null)
                 {
-                    await DisplayAlertAsync("Aviso", "Ingrediente n„o encontrado.", "OK");
+                    await DisplayAlertAsync("Aviso", "Ingrediente n√£o encontrado.", "OK");
                     return;
                 }
 
@@ -144,7 +144,7 @@ public partial class RecipeEditPage : ContentPage
                 {
                     if (!decimal.TryParse(qtyRaw, out qty))
                     {
-                        await DisplayAlertAsync("Erro", "Quantidade inv·lida.", "OK");
+                        await DisplayAlertAsync("Erro", "Quantidade inv√°lida.", "OK");
                         return;
                     }
                 }
@@ -176,7 +176,7 @@ public partial class RecipeEditPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel editar ingrediente.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel editar ingrediente.\n{ex.Message}", "OK");
         }
     }
 
@@ -189,7 +189,7 @@ public partial class RecipeEditPage : ContentPage
                 var item = _ingredients.FirstOrDefault(x => x.IngredientId == ingId);
                 if (item == null)
                 {
-                    await DisplayAlertAsync("Aviso", "Ingrediente n„o encontrado.", "OK");
+                    await DisplayAlertAsync("Aviso", "Ingrediente n√£o encontrado.", "OK");
                     return;
                 }
 
@@ -202,7 +202,7 @@ public partial class RecipeEditPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel remover ingrediente.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel remover ingrediente.\n{ex.Message}", "OK");
         }
     }
 
@@ -215,7 +215,7 @@ public partial class RecipeEditPage : ContentPage
 
             if (string.IsNullOrWhiteSpace(_current.Name))
             {
-                await DisplayAlertAsync("ValidaÁ„o", "Nome È obrigatÛrio.", "OK");
+                await DisplayAlertAsync("Valida√ß√£o", "Nome √© obrigat√≥rio.", "OK");
                 return;
             }
 
@@ -228,7 +228,7 @@ public partial class RecipeEditPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel salvar a receita.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel salvar a receita.\n{ex.Message}", "OK");
         }
     }
 

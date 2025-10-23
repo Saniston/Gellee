@@ -55,7 +55,7 @@ public partial class RecipesPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel carregar receitas.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel carregar receitas.\n{ex.Message}", "OK");
         }
         finally
         {
@@ -91,7 +91,7 @@ public partial class RecipesPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel iniciar ediÁ„o.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel iniciar edi√ß√£o.\n{ex.Message}", "OK");
         }
     }
 
@@ -104,7 +104,7 @@ public partial class RecipesPage : ContentPage
                 var recipe = _items.FirstOrDefault(x => x.Id == id) ?? _recipeService.GetById(id);
                 if (recipe == null)
                 {
-                    await DisplayAlertAsync("Aviso", "Receita n„o encontrada.", "OK");
+                    await DisplayAlertAsync("Aviso", "Receita n√£o encontrada.", "OK");
                     return;
                 }
 
@@ -120,7 +120,7 @@ public partial class RecipesPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel remover a receita.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel remover a receita.\n{ex.Message}", "OK");
         }
     }
 
@@ -137,7 +137,7 @@ public partial class RecipesPage : ContentPage
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex);
-            await DisplayAlertAsync("Erro", $"N„o foi possÌvel abrir a receita.\n{ex.Message}", "OK");
+            await DisplayAlertAsync("Erro", $"N√£o foi poss√≠vel abrir a receita.\n{ex.Message}", "OK");
         }
     }
 }
